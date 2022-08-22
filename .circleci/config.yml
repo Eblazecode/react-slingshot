@@ -57,9 +57,9 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  pipelining-workflow:
     jobs:
-      - say-hello
+
       - Building
       - testing :
          requires:
