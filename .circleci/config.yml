@@ -6,24 +6,8 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 
 
-
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World! people  exactly !"
-
-
-
-Building:
+  Building:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -39,7 +23,7 @@ Building:
       - run: npm run lint
 
 
-testing:
+  testing:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -54,7 +38,7 @@ testing:
       - run : npm i
       - run: npm run test
 
-anayze:
+  anayze:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -76,10 +60,10 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - building
+      - Building
       - testing :
          requires:
-           - building
+          - Building
 
       - analyze:
          requires:
