@@ -10,16 +10,7 @@ orbs:
 jobs:
 
 # install node
-  installing-node:
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - node/install:
-          node-version:'16.13'
-      - run: node --version
+
 
   Building:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -73,10 +64,8 @@ jobs:
 workflows:
   pipelining-workflow:
     jobs:
-      - installing-node
-      - Building:
-          requires:
-            - installing-node
+
+      - Building
       - testing :
          requires:
           - Building
